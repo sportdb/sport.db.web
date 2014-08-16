@@ -1,0 +1,12 @@
+Gemfile
+Gemfile.lock
+HISTORY.md
+Manifest.txt
+README.md
+Rakefile
+bin/sportweb
+lib/sportweb.rb
+lib/sportweb/app.rb
+lib/sportweb/boot_with_bundler.rb
+lib/sportweb/boot_with_require.rb
+lib/sportweb/version.rb
