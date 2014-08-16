@@ -9,4 +9,5 @@ lib/sportweb.rb
 lib/sportweb/app.rb
 lib/sportweb/boot_with_bundler.rb
 lib/sportweb/boot_with_require.rb
+lib/sportweb/deps.rb
 lib/sportweb/version.rb
