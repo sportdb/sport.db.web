@@ -32,3 +32,14 @@ build/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+##########################
+# rails log folder
+
+/log/
+
+################
+# sqlite dbs in root (e.g. football.db)
+
+*.db
+
