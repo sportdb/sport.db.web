@@ -56,10 +56,12 @@ end
 puts '[boot] after require rails/all'
 
 
+#############
+### move require app to sportweb.rb ????
 
-puts '[boot] before require sportdb/browse/app'
-require 'sportdb/browse/app'
-puts '[boot] after require sportdb/browse/app'
+puts '[boot] before require sportweb/app'
+require 'sportweb/app'
+puts '[boot] after require sportweb/app'
 
 
 

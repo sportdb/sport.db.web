@@ -1,29 +1,44 @@
 # encoding: utf-8
 
 
-puts '[boot] enter sportdb/browse/app.rb'
+puts '[boot] enter sportweb/app.rb'
 
 ####
 # setup mini-rails
 #   see https://gist.github.com/josevalim/1942658
 #   and others
 
-
-class SportDbBrowser < Rails::Application
+### host app - no module - keep it simple
+class SportWebHost < Rails::Application
 
   routes.append do
     match '/hello/world' => 'hello#world'
+
+    ## mount About::Server, :at => '/sysinfo'
+    ## mount DbBrowser::Server, :at => '/browse'
+
+    ###
+    # mount sinatra app (bundled w/ sportdb-service gem) for json api service
+    # todo: add JSON API link to layout
+    ## get '/api' => redirect('/api/v1')
+    ## mount SportDb::Service::Server, :at => '/api/v1' # NB: make sure to require 'sportdb-service'
+
+    ## mount sinatra app (bundled w/ logutils gem)
+    ## mount LogDb::Server, :at => '/logs' # NB: make sure to require 'logutils/server'
+
+    mount SportDbAdmin::Engine, :at => '/'  # mount a root possible?
   end
+
+
+  # Configure the default encoding used in templates for Ruby 1.9.
+  config.encoding = "utf-8"
 
   # Enable cache classes. Production style.
   config.cache_classes = true
- 
+
   # We need a secret token for session, cookies, etc.
   config.secret_token = "49837489qkuweoiuoqwehisuakshdjksadhaisdy78o34y138974xyqp9rmye8yrpiokeuioqwzyoiuxftoyqiuxrhm3iou1hrzmjk"
 
-
- # Configure the default encoding used in templates for Ruby 1.9.
-  config.encoding = "utf-8"
 
   #################################################
   # Enable the asset pipeline !!!!!!!!!!!!!!!!
@@ -53,6 +68,7 @@ class HelloController < ActionController::Metal
   end
 end
 
+
 ####
 #  Database Setup & Config
 #
@@ -79,7 +95,7 @@ include SportDb::Models
 
 puts '[boot] before App.initialize!'
 # Initialize the app (originally in config/environment.rb)
-SportDbBrowser.initialize!
+SportWebHost.initialize!
 puts '[boot] after App.initialize!'
 
 
@@ -109,11 +125,10 @@ puts ">> Starting Rails stack:"
 Rails.configuration.middleware.each do |middleware|
   puts "use #{middleware.inspect}"
 end
-puts "run #{Rails.application.class.name}.routes"
 
 ## # Run it (originally in config.ru)
 ## run MyApp
 
 
 
-puts '[boot] leave sportdb/browse/app.rb'
+puts '[boot] leave sportweb/app.rb'

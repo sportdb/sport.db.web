@@ -1,24 +1,33 @@
-# sport.db.browse.ruby
-
-sportdb-browse gem - sport.db addon for web admin
-
+# sportweb gem - instant open sports web browser command line tool
 
 
 ## Usage
 
-TBD
+Step 1: Startup the instant web server:
+
+    $ sportweb
+
+or
+
+    $ sportweb worldcup.db
+
+
+Step 2:  Open your browser of choice
+and start browsing your open sports database (e.g. sport.db, football.db, worldcup.db, etc.).
+That's it.
+
 
 
 ## Install
 
 Just install the gem:
 
-    $ gem install sportdb-browse
+    $ gem install sportweb
 
 
 ## License
 
-The `sportdb-browse` scripts are dedicated to the public domain.
+The `sportweb` scripts are dedicated to the public domain.
 Use it as you please with no restrictions whatsoever.
 
 

@@ -37,6 +37,7 @@ build/
 # rails log folder
 
 /log/
+/tmp/
 
 ################
 # sqlite dbs in root (e.g. football.db)

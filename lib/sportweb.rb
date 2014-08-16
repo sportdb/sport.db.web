@@ -2,11 +2,11 @@
 
 ###
 #  test run like:
-#    $ ruby -I ./lib ./lib/sportdb/browse.rb
+#    $ ruby -I ./lib ./lib/sportweb.rb
 
 
 
-require 'sportdb/browse/boot_with_bundler'
+require 'sportweb/boot_with_bundler'
 
 
 puts 'hello'
@@ -21,18 +21,23 @@ app = Rack::Builder.new {
   ##  run Sinatra.application
   ### end
 
-  map '/db' do
-    run SportDbAdmin::Engine
-  end
+##  map '/' do
+##    run SportDbAdmin::Engine
+##  end
 
-
-  # Rest with Rails
+  # Rest with "Dummy" Rails Host App
   map '/' do
-    run SportDbBrowser
+    run SportWebHost
   end
-  
+
 }.to_app
 
+
+#####
+# fix/todo:
+##   use differnt port ??
+##
+##  use --local  for host e.g. 127.0.0.1  insteaod of 0.0.0.0 ???
 
 puts 'before Thin.run app'
 Rack::Handler::Thin.run app, :Port => 3000, :Host => '0.0.0.0'
