@@ -20,13 +20,43 @@ require 'pp'
 
 # 3rd party gems via bundler (see Gemfile)
 
+####
+# Note:
+# The Bundle setup "clears" the load path,
+# so the subsequent attempt to require something that is not in Gemfile
+# will result of the load error.
+
+##
+# note: will look for Gemfile in current working folder
+#  use BUNDLE_GEMFILE env variable to
+#   tell bundler where the Gemfile is
+
+puts "ENV['BUNDLE_GEMFILE']=>>#{ENV['BUNDLE_GEMFILE']}<<"
+ENV['BUNDLE_GEMFILE'] = "#{SportWeb.root}/Gemfile"
+puts "ENV['BUNDLE_GEMFILE']=>>#{ENV['BUNDLE_GEMFILE']}<<"
+
+puts "load_path before:"
+pp $:
+
 puts '[boot] before Bundler.setup'
 Bundler.setup
 puts '[boot] after Bundler.setup'
 
+puts "load_path after:"
+pp $:
+
+####
+# Note:
+# For a small Gemfile, we'd advise you to skip Bundler.require
+# and just require the gems by hand (especially given the need
+# to put in a :require directive in the Gemfile).
+# For much larger Gemfiles, using Bundler.require allows
+# you to skip repeating a large stack of requirements. 
+
 puts '[boot] before Bundler.require'
 Bundler.require(:default, ENV['RACK_ENV'].to_sym)
 puts '[boot] after Bundler.require'
+
 
 #########
 # require rails n rails/all - still needed ??

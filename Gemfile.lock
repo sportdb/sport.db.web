@@ -110,6 +110,7 @@ GEM
       textutils
       worlddb (>= 2.0.2)
     sportdb-admin (0.3.0)
+    sportweb (0.0.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -154,6 +155,7 @@ DEPENDENCIES
   sinatra
   sportdb
   sportdb-admin
+  sportweb
   sprockets-rails
   sqlite3
   thin

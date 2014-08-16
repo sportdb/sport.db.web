@@ -9,7 +9,7 @@
 
 ## Usage
 
-#### Step 1: Startup the instant web server.
+#### Step 1: Start the instant web server.
 
 Type in your shell:
 
@@ -19,16 +19,15 @@ or
 
     $ sportweb worldcup.db
 
+Note: The web server runs by default on port `3000`.
 
     >> Thin web server (v3.7.1 codename Doc Brown)
     >> Listening on 0.0.0.0:3000, CTRL+C to stop
 
-Note: The web server runs by default on port `3000`.
 
+#### Step 2: Open your web browser.
 
-#### Step 2: Open your browser of choice and start browsing.
-
-Open your browser of choice (e.g. [`localhost:3000`](http://localhost:3000))
+Open your web browser of choice (e.g. [`localhost:3000`](http://localhost:3000))
 and start browsing your open sports database
 (e.g. `sport.db`, `football.db`, `worldcup.db`, etc.).
 
