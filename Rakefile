@@ -1,6 +1,8 @@
 require 'hoe'
 require './lib/sportweb/version.rb'
-require './lib/sportweb/deps.rb'
+
+require './script/deps.rb'
+
 
 ##############
 # note:
@@ -22,7 +24,7 @@ Hoe.spec 'sportweb' do
   self.summary = 'sportweb - instant open sports web browser command line tool'
   self.description = summary
 
-  self.urls = ['https://github.com/sportdb/sport.db.web.ruby']
+  self.urls = ['https://github.com/sportdb/sport.db.web']
 
   self.author = 'Gerald Bauer'
   self.email = 'opensport@googlegroups.com'

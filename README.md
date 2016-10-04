@@ -1,7 +1,7 @@
 # sportweb gem - instant open sports web browser command line tool
 
-* home  :: [github.com/sportdb/sport.db.web.ruby](https://github.com/sportdb/sport.db.web.ruby)
-* bugs  :: [github.com/sportdb/sport.db.web.ruby/issues](https://github.com/sportdb/sport.db.web.ruby/issues)
+* home  :: [github.com/sportdb/sport.db.web](https://github.com/sportdb/sport.db.web)
+* bugs  :: [github.com/sportdb/sport.db.web/issues](https://github.com/sportdb/sport.db.web/issues)
 * gem   :: [rubygems.org/gems/sportweb](https://rubygems.org/gems/sportweb)
 * rdoc  :: [rubydoc.info/gems/sportweb](http://rubydoc.info/gems/sportweb)
 * forum :: [groups.google.com/group/opensport](https://groups.google.com/group/opensport)

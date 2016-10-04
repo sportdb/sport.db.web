@@ -1,26 +1,29 @@
-
 ###
 # helper to generate gemspec dependencies from Gemfile.lock
 
+#
+#  for testing use like:
+#   ruby ./script/deps.rb
+
+
 require 'pp'
 
-###
-### fix:
-###  move to version ????
-###   include root too ??
-###   avoids duplication
-###
-### remove this file completely !!!
+
+require_relative '../lib/sportweb/version'    # get version
+
 
 
 module SportWeb
 
+
 def self.gemfile_path
   # note: do NOT use SportWeb.root  (keep file self-contained)
-  path = File.expand_path(  File.dirname(File.dirname(File.dirname(__FILE__))) )
-  path += "/Gemfile.lock"
-  path
+  # path = File.expand_path(  File.dirname(File.dirname(File.dirname(__FILE__))) )
+  # path += "/Gemfile.lock"
+  # path
+  './Gemfile.lock'
 end
+
 
 def self.deps
   puts "reading gemfile=>>#{gemfile_path}<<..."
@@ -30,7 +33,7 @@ def self.deps
 
   inside_gem_sect = false
   File.read( gemfile_path ).each_line do |line|
-    
+
     line = line.gsub( "\n", '' ).gsub( "\f", '' )  ## remove newlines
 
     if line =~ /^GEM/
@@ -66,5 +69,14 @@ def self.deps
   gems
 end
 
-end  # module SportWeb
+end # module SportWeb
 
+
+
+
+### for testing
+
+if __FILE__ == $0
+  gems = SportWeb.deps
+  pp gems
+end
