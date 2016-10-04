@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'rails', '4.2.7.1'
 
 gem 'sinatra', require: 'sinatra/base'
@@ -51,8 +52,8 @@ gem 'worlddb-flags', '0.1.0'  # use bundled country flags
 ## gem 'dbbrowser' # mountable app
 
 
-## gem 'web-console', '~> 2.0'
-## gem 'byebug'
+gem 'web-console', '~> 2.0'
+gem 'byebug'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

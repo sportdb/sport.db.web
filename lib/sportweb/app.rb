@@ -12,7 +12,7 @@ puts '[boot] enter sportweb/app.rb'
 class SportWebHost < Rails::Application
 
   routes.append do
-    match '/hello/world' => 'hello#world'
+    get '/hello/world' => 'hello#world'
 
     ## mount About::Server, :at => '/sysinfo'
     ## mount DbBrowser::Server, :at => '/browse'
@@ -36,6 +36,8 @@ class SportWebHost < Rails::Application
   # Enable cache classes. Production style.
   config.cache_classes = true
 
+  config.eager_load = false   ## switch to true - why? why not?  - default for dev is false
+
   # We need a secret token for session, cookies, etc.
   config.secret_token = "49837489qkuweoiuoqwehisuakshdjksadhaisdy78o34y138974xyqp9rmye8yrpiokeuioqwzyoiuxftoyqiuxrhm3iou1hrzmjk"
 
@@ -45,6 +47,7 @@ class SportWebHost < Rails::Application
   config.assets.enabled = true
   # Version of your assets, change this if you want to expire all your assets
   config.assets.version = '1.0'
+  config.assets.precompile += %w(*.png)
 
   ### Enables Sprockets compile environment.
   ## If disabled, Rails.application.assets will be unavailable
@@ -62,7 +65,7 @@ end
 
 class HelloController < ActionController::Metal
   include ActionController::Rendering
- 
+
   def world
     render text: 'Hello world!'
   end
@@ -76,12 +79,12 @@ end
 #
 #  see stackoverflow.com/questions/4204724/strategies-for-overriding-database-yml
 #
-#  google for "rails database.yml opt out" ??? 
+#  google for "rails database.yml opt out" ???
 
 
 db_config = {
-adapter: 'sqlite3',
-database: 'football.db' # NOTE: change to use your db of choice (e.g. worldcup.db, bundesliga.db, ski.db etc.)
+  adapter: 'sqlite3',
+  database: 'sport.db' # NOTE: change to use your db of choice (e.g. worldcup.db, bundesliga.db, ski.db etc.)
 }
 
 pp db_config
