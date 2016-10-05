@@ -32,8 +32,9 @@ def self.deps
   gems = []
 
   inside_gem_sect = false
+  lineno=0
   File.read( gemfile_path ).each_line do |line|
-
+    lineno += 1
     line = line.gsub( "\n", '' ).gsub( "\f", '' )  ## remove newlines
 
     if line =~ /^GEM/
@@ -52,13 +53,19 @@ def self.deps
               puts " *** error: gemfile includes out-of-date sportweb version #{$2} != #{VERSION}"
             end
           else
-            gems << [$1.dup, "= #{$2}"]   ## e.g. ['worlddb','= 1.2.4']
+            name    = $1.dup
+            version = $2.dup
+            ## note: cut off platform markers e.g. -x86-mingw32
+            ##  e.g. 1.6.8.1-x86-mingw32 => 1.6.8.1
+            version = version.sub( '-x86-mingw32', '' )
+
+            gems << [name, "= #{version}"]   ## e.g. ['worlddb','= 1.2.4']
           end
 
         elsif line =~ /^\s{6}/
           ## skip (sub) gem deps (indented w/ six spaces)
         else
-           puts "  warn: skipping line inside GEM section >>#{line}<<"
+           puts "  warn: skipping line #{lineno} inside GEM section >>#{line}<<"
         end
       else
         # skip line

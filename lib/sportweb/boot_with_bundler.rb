@@ -31,8 +31,21 @@ require 'pp'
 #  use BUNDLE_GEMFILE env variable to
 #   tell bundler where the Gemfile is
 
+puts "SportWeb.root: >>#{SportWeb.root}<<"
+
 puts "ENV['BUNDLE_GEMFILE']=>>#{ENV['BUNDLE_GEMFILE']}<<"
-ENV['BUNDLE_GEMFILE'] = "#{SportWeb.root}/Gemfile"
+
+## check if BUNDLE_GEMFILE env present/set? why? why not?
+## for now check if Gemfile exists in working (current) dir? if yes, use it
+
+if File.exist?( "./Gemfile")
+  puts "using local Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "./Gemfile"
+else
+  puts "using built-in Gemfile (shipping with sportweb gem)"
+  ENV['BUNDLE_GEMFILE'] = "#{SportWeb.root}/Gemfile"
+end
+
 puts "ENV['BUNDLE_GEMFILE']=>>#{ENV['BUNDLE_GEMFILE']}<<"
 
 puts "load_path before:"
@@ -51,7 +64,7 @@ pp $:
 # and just require the gems by hand (especially given the need
 # to put in a :require directive in the Gemfile).
 # For much larger Gemfiles, using Bundler.require allows
-# you to skip repeating a large stack of requirements. 
+# you to skip repeating a large stack of requirements.
 
 puts '[boot] before Bundler.require'
 Bundler.require(:default, ENV['RACK_ENV'].to_sym)
@@ -96,4 +109,3 @@ puts '[boot] after require sportweb/app'
 
 
 puts '[boot] leave boot_with_bundler.rb'
-
