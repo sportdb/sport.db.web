@@ -55,6 +55,17 @@ puts '[boot] before Bundler.setup'
 Bundler.setup
 puts '[boot] after Bundler.setup'
 
+
+unless File.exist?( "./Gemfile")
+  ## if using built-in Gemfile shipping with gems
+  ##   auto-add sportweb/lib (that, this gem) to load path
+  ##  note: built-in Gemfile excludes (does NOT include) sportweb
+
+  puts "[boot] adding #\{SportWeb.root}/lib to load path #{SportWeb.root}/lib"
+  $:.unshift "#{SportWeb.root}/lib"
+end
+
+
 puts "load_path after:"
 pp $:
 
