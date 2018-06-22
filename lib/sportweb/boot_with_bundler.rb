@@ -11,6 +11,7 @@ require 'bundler'
 puts '[boot] after require bundler'
 
 
+
 # ruby core n stdlibs
 require 'json'
 require 'uri'
@@ -106,6 +107,11 @@ puts '[boot] before require rails/all'
   rescue LoadError
   end
 end
+
+
+## require: 'action_controller/railtie'  ## needed by sprockets-rails
+## require: 'sprockets/railtie'
+
 
 puts '[boot] after require rails/all'
 

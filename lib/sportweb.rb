@@ -18,7 +18,7 @@ module SportWeb
   def self.root
     "#{File.expand_path( File.dirname(File.dirname(__FILE__)) )}"
   end
-  
+
   def self.main
     puts 'hello from main'
 
@@ -50,9 +50,11 @@ module SportWeb
     ##
     ##  use --local  for host e.g. 127.0.0.1  insteaod of 0.0.0.0 ???
 
-    puts 'before Thin.run app'
-    Rack::Handler::Thin.run app, :Port => 3000, :Host => '0.0.0.0'
-    puts 'after Thin.run app'
+    puts 'before Puma.run app'
+    require 'rack/handler/puma'
+    Rack::Handler::Puma.run app, :Port => 3000, :Host => '0.0.0.0'
+    ## Rack::Handler::Thin.run app, :Port => 3000, :Host => '0.0.0.0'
+    puts 'after Puma.run app'
 
     puts 'bye'
   end
@@ -62,4 +64,3 @@ end # module SportWeb
 
 
 SportWeb.main  if __FILE__ == $0
-
