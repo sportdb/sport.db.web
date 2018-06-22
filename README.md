@@ -1,10 +1,11 @@
-# sportweb gem - instant open sports web browser command line tool
+# sportweb gem - instant open sports web admin browser command line tool
 
 * home  :: [github.com/sportdb/sport.db.web](https://github.com/sportdb/sport.db.web)
 * bugs  :: [github.com/sportdb/sport.db.web/issues](https://github.com/sportdb/sport.db.web/issues)
 * gem   :: [rubygems.org/gems/sportweb](https://rubygems.org/gems/sportweb)
 * rdoc  :: [rubydoc.info/gems/sportweb](http://rubydoc.info/gems/sportweb)
 * forum :: [groups.google.com/group/opensport](https://groups.google.com/group/opensport)
+
 
 
 ## Usage
@@ -21,8 +22,11 @@ or
 
 Note: The web server runs by default on port `3000`.
 
-    >> Thin web server (v3.7.1 codename Doc Brown)
-    >> Listening on 0.0.0.0:3000, CTRL+C to stop
+    >> Puma starting in single mode...
+    >> * Version 3.11.4 (ruby 2.4.4-p296), codename: Love Song
+    >> * Listening on tcp://0.0.0.0:3000
+    >> Use Ctrl-C to stop
+
 
 
 #### Step 2: Open your web browser.
@@ -31,7 +35,9 @@ Open your web browser of choice (e.g. [`localhost:3000`](http://localhost:3000))
 and start browsing your open sports database
 (e.g. `sport.db`, `football.db`, `worldcup.db`, etc.).
 
-[add pic here]
+
+![i/worldcup2018.png]
+
 
 That's it.
 

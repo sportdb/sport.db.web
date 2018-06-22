@@ -21,7 +21,7 @@ Hoe.spec 'sportweb' do
 
   self.version = SportWeb::VERSION
 
-  self.summary = 'sportweb - instant open sports web browser command line tool'
+  self.summary = 'sportweb - instant open sports web admin browser command line tool'
   self.description = summary
 
   self.urls = ['https://github.com/sportdb/sport.db.web']
@@ -38,7 +38,7 @@ Hoe.spec 'sportweb' do
   self.extra_deps = SportWeb.deps
 
   self.spec_extras = {
-   :required_ruby_version => '>= 1.9.2'
+   :required_ruby_version => '>= 2.3'
   }
 
 end
