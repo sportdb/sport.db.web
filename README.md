@@ -36,7 +36,7 @@ and start browsing your open sports database
 (e.g. `sport.db`, `football.db`, `worldcup.db`, etc.).
 
 
-![i/worldcup2018.png]
+![](i/worldcup2018.png)
 
 
 That's it.
