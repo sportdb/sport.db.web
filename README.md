@@ -10,6 +10,18 @@
 
 ## Usage
 
+#### Step 0: Build yourself a local worldcup database from scratch (zero).
+
+Use the sportdb command line tool machinery to build yourself a local single-file SQLite database
+from the (online) datasets from scratch (zero) using the [`worldcup.rb` datafile](https://github.com/openfootball/datafile/blob/master/worldcup.rb). Type in your shell:
+
+    $ mkdir worldcup
+    $ cd worldcup
+    $ sportdb new worldcup              # use the worldcup.rb datafile   
+
+
+
+
 #### Step 1: Start the instant web server.
 
 Type in your shell:
