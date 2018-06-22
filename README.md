@@ -36,6 +36,8 @@ and start browsing your open sports database
 (e.g. `sport.db`, `football.db`, `worldcup.db`, etc.).
 
 
+Example - World Cup 2018 in Russia:
+
 ![](i/worldcup2018.png)
 
 
