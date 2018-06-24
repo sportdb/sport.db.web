@@ -1,5 +1,9 @@
 # Todos
 
+- [ ] check if we can move rails app root to sportweb/lib/sportweb ?
+      is sportweb now and public is sportweb/public - do we care anyway?
+
+
 
 - [ ] check if app is running development or production???
     - use development or production - why? why not??
@@ -12,7 +16,25 @@ Rails.application.class: SportWebHost
 Rails.application.assets.class: Sprockets::CachedEnvironment
 ```
 
+
 ## Errors
+
+```
+ActionView::Template::Error (Asset was not declared to be precompiled in production.
+Add `Rails.application.config.assets.precompile += %w( flags/24x24/de.png )` to `config/initializers/assets.rb` and restart your server):
+```
+
+```
+ActionView::Template::Error (Asset was not declared to be precompiled in production.
+Add `Rails.application.config.assets.precompile += %w( flags/24x24/at.png )` to `config/initializers/assets.rb` and restart your server):
+    1:
+    2: <span>
+    3:   <%= flag_for_country( team.country ) %>
+```
+
+```
+ActionController::RoutingError (No route matches [GET] "/images/flags/24x24/eng.png"):
+```
 
 ```
 fix route for /favicon

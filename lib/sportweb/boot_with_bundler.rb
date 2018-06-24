@@ -3,7 +3,9 @@
 puts '[boot] enter boot_with_bundler.rb'
 
 
-ENV['RACK_ENV'] ||= 'development'
+## note: use production env
+##   note: requires precompiled assets with fingerprints!!!!
+ENV['RACK_ENV'] ||= 'production'
 puts "ENV['RACK_ENV'] = #{ENV['RACK_ENV']}"
 
 puts '[boot] before require bundler'

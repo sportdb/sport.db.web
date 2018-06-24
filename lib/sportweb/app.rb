@@ -12,7 +12,11 @@ puts '[boot] enter sportweb/app.rb'
 class SportWebHost < Rails::Application
 
   routes.append do
-    get '/hello/world' => 'hello#world'
+    get 'hello/world', to: 'hello#world'
+
+
+    get 'images/flags/*other', to: 'images#flags'
+    get 'images/logos/*other', to: 'images#logos'
 
     ## mount About::Server, :at => '/sysinfo'
     ## mount DbBrowser::Server, :at => '/browse'
@@ -47,7 +51,14 @@ class SportWebHost < Rails::Application
   config.assets.enabled = true
   # Version of your assets, change this if you want to expire all your assets
   config.assets.version = '1.0'
-  config.assets.precompile += %w(*.png)
+  ## config.assets.precompile += %w(*.png)
+
+  ## config.assets.unknown_asset_fallback = true  ## if not found with asset pipeline; use public as fallback
+  ## DEPRECATION WARNING: The asset "flags/24x24/eng.png" is not present in the asset pipeline.Falling back to an asset that may be in the public folder.
+  ## This behavior is deprecated and will be removed.
+  ## To bypass the asset pipeline and preserve this behavior,
+  ## use the `skip_pipeline: true` option.
+
 
   ### Enables Sprockets compile environment.
   ## If disabled, Rails.application.assets will be unavailable
@@ -63,13 +74,33 @@ end
 # This is a barebone controller. One good reference can be found here:
 # http://piotrsarnacki.com/2010/12/12/lightweight-controllers-with-rails3/
 
-class HelloController < ActionController::Metal
-  include ActionController::Rendering
-
+## class HelloController < ActionController::Metal
+##  include ActionController::Rendering
+class HelloController < ActionController::Base
   def world
-    render text: 'Hello world!'
+    render inline: 'Hello world!'
   end
 end
+
+
+
+
+class ImagesController < ActionController::Base
+  def flags
+    puts "flags params:"
+    pp params
+
+     render inline: 'Not found', :status => 404
+  end
+
+  def logos
+    puts "logos params:"
+    pp params
+
+    render inline: 'Not found', :status => 404
+  end
+end
+
 
 
 ####
@@ -106,6 +137,10 @@ puts '[boot] after App.initialize!'
 ####
 # check asset pipeline
 
+puts "Rails.public_path:"
+pp   Rails.public_path
+
+
 puts "Rails.version:     #{Rails.version}"
 puts "Rails.env:         #{Rails.env}"
 puts "Rails.root:        #{Rails.root}"
@@ -119,8 +154,16 @@ puts ">> Rails asset pipeline:"
 if Rails.application.assets.find_asset( "logos/24x24/austria.png" ).present?
   puts "asset 'logos/24x24/austria.png' found"
 else
-  puts "asset 'logos/24x24/austria.png' not found"
+  puts "!!! - asset 'logos/24x24/austria.png' NOT found"
 end
+
+## todo/check: include images/ folder - needed no/yes  check - why? why not?
+if Rails.application.assets.find_asset( "flags/24x24/at.png" ).present?
+  puts "asset 'flags/24x24/at.png' found"
+else
+  puts "!!! - asset 'flags/24x24/at.png' NOT found"
+end
+
 
 
 # Print the stack for fun!
