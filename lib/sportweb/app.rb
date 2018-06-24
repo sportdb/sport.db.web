@@ -3,6 +3,39 @@
 
 puts '[boot] enter sportweb/app.rb'
 
+
+##
+# monkey patch image helpers
+
+module ImageHelperExtension
+  def logo_for_team( team )
+    puts "*** image_helper/logo_for_team #{team.key}"
+    super  # old_logo_for_team( team )
+  end
+
+  def flag_for_country( country )
+    puts "*** image_helper/flag_for_country #{country.key}"
+    if country.key == 'eng'
+      ## quick fix/hack: eng=>en
+      puts "*** use eng quick fix"
+      # image_tag( "flags/24x24/en.png" )
+      ''
+    else
+      ## super  # old_flag_for_country( country )
+      ''
+    end
+  end
+end
+
+module SportDbAdmin
+  module ImageHelper
+    prepend ImageHelperExtension
+  end # module ImageHelperExtension
+end # module SportDbAdmin
+
+
+
+
 ####
 # setup mini-rails
 #   see https://gist.github.com/josevalim/1942658
@@ -15,8 +48,8 @@ class SportWebHost < Rails::Application
     get 'hello/world', to: 'hello#world'
 
 
-    get 'images/flags/*other', to: 'images#flags'
-    get 'images/logos/*other', to: 'images#logos'
+    ## get 'images/flags/*other', to: 'images#flags'
+    ## get 'images/logos/*other', to: 'images#logos'
 
     ## mount About::Server, :at => '/sysinfo'
     ## mount DbBrowser::Server, :at => '/browse'
