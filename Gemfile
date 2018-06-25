@@ -18,8 +18,8 @@ gem 'activerecord',  '5.2.0', require: false
 gem 'activesupport', '5.2.0', require: false
 gem 'railties',      '5.2.0', require: false
 
-gem 'sprockets-rails', '>= 2.0.0',   require: false
-gem 'bundler',       '>= 1.3.0',    require: false
+gem 'sprockets-rails',  '>= 2.0.0',   require: false
+gem 'bundler',          '>= 1.3.0',    require: false
 
 
 
@@ -77,8 +77,13 @@ gem 'worlddb-flags', '0.1.0'  # use bundled country flags
 ## gem 'web-console' ## , '~> 2.0'
 ## gem 'byebug'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+## note:
+# was: Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#
+#  note: quick fix - include for all platforms for now
+#    included gemfile.lock and gemspec deps are single-platform for now only
+gem 'tzinfo-data'
 
 
 
