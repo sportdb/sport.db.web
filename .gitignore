@@ -40,7 +40,6 @@ build/
 /tmp/
 
 ################
-# sqlite dbs in root (e.g. football.db)
+# sqlite dbs in root (e.g. sport.db, worldcup.db, football.db)
 
 *.db
-

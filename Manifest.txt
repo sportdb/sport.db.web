@@ -10,3 +10,12 @@ lib/sportweb/app.rb
 lib/sportweb/boot_with_bundler.rb
 lib/sportweb/boot_with_require.rb
 lib/sportweb/version.rb
+public/404.html
+public/422.html
+public/500.html
+public/favicon.ico
+public/images/placeholder24x24.png
+public/images/placeholder32x32.png
+public/images/placeholder48x48.png
+public/images/placeholder64x64.png
+public/robots.txt

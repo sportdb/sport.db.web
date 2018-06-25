@@ -10,7 +10,8 @@ puts '[boot] enter sportweb/app.rb'
 module ImageHelperExtension
   def logo_for_team( team )
     puts "*** image_helper/logo_for_team #{team.key}"
-    super  # old_logo_for_team( team )
+    ## super  # old_logo_for_team( team )
+    ''
   end
 
   def flag_for_country( country )
@@ -75,16 +76,22 @@ class SportWebHost < Rails::Application
 
   config.eager_load = false   ## switch to true - why? why not?  - default for dev is false
 
+  ##
   # We need a secret token for session, cookies, etc.
-  config.secret_token = "49837489qkuweoiuoqwehisuakshdjksadhaisdy78o34y138974xyqp9rmye8yrpiokeuioqwzyoiuxftoyqiuxrhm3iou1hrzmjk"
+  # note: change for rails 5 to secret_key_base (from secret_token)
+  config.secret_key_base = "49837489qkuweoiuoqwehisuakshdjksadhaisdy78o34y138974xyqp9rmye8yrpiokeuioqwzyoiuxftoyqiuxrhm3iou1hrzmjk"
+
 
 
   #################################################
   # Enable the asset pipeline !!!!!!!!!!!!!!!!
   config.assets.enabled = true
   # Version of your assets, change this if you want to expire all your assets
-  config.assets.version = '1.0'
+  config.assets.version = 'v1'
   ## config.assets.precompile += %w(*.png)
+
+  # config.assets.quiet = false   ## try for debugging to see asset pipeline requests
+  # config.assets.check_precompiled_asset = true
 
   ## config.assets.unknown_asset_fallback = true  ## if not found with asset pipeline; use public as fallback
   ## DEPRECATION WARNING: The asset "flags/24x24/eng.png" is not present in the asset pipeline.Falling back to an asset that may be in the public folder.
@@ -146,9 +153,22 @@ end
 #  google for "rails database.yml opt out" ???
 
 
+if ARGV[0]
+  DB_PATH = ARGV[0]     ## e.g world.db etc.
+else
+  DB_PATH = 'sport.db'
+  puts "trying to use default / fallback SQLite database >#{DB_PATH}<"
+end
+
+unless File.exist?( DB_PATH )
+  puts "*** error - single-file SQLite database >#{DB_PATH}< missing / not found"
+  exit 1
+end
+
+
 db_config = {
   adapter: 'sqlite3',
-  database: 'sport.db' # NOTE: change to use your db of choice (e.g. worldcup.db, bundesliga.db, ski.db etc.)
+  database: DB_PATH     # NOTE: change to use your db of choice (e.g. worldcup.db, bundesliga.db, ski.db etc.)
 }
 
 pp db_config
