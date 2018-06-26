@@ -4,8 +4,9 @@
 #  test run like:
 #    $ ruby -I ./lib ./lib/sportweb.rb
 
-
-require 'sportweb/version'   # let version always go first
+########
+#  test application setup for rake like:
+#    $ ruby -I ./lib ./lib/sportweb/application.rb   (no db connect, no app init)
 
 
 
@@ -14,7 +15,9 @@ module SportWeb
   def self.main
     puts 'hello from main'
 
-    require 'sportweb/boot_with_bundler'
+
+    require_relative 'sportweb/environment'   ## note: uses boot_with_bundler for now
+
 
     #####
     # fix/todo:

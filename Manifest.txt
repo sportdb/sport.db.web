@@ -6,9 +6,10 @@ README.md
 Rakefile
 bin/sportweb
 lib/sportweb.rb
-lib/sportweb/app.rb
+lib/sportweb/application.rb
 lib/sportweb/boot_with_bundler.rb
 lib/sportweb/boot_with_require.rb
+lib/sportweb/environment.rb
 lib/sportweb/version.rb
 public/404.html
 public/422.html

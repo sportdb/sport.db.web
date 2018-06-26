@@ -21,6 +21,10 @@ require 'logger'
 require 'pp'
 
 
+## our own code
+require_relative 'version'
+
+
 # 3rd party gems via bundler (see Gemfile)
 
 ####
@@ -116,15 +120,6 @@ end
 
 
 puts '[boot] after require rails/all'
-
-
-#############
-### move require app to sportweb.rb ????
-
-puts '[boot] before require sportweb/app'
-require 'sportweb/app'
-puts '[boot] after require sportweb/app'
-
 
 
 puts '[boot] leave boot_with_bundler.rb'
