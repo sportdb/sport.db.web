@@ -14,6 +14,9 @@ lib/sportweb/version.rb
 public/404.html
 public/422.html
 public/500.html
+public/assets/.sprockets-manifest-788847add62e4ab2ba610d2cd52c89dd.json
+public/assets/sport_db_admin/application-08484e592c1b50324dc96fc42bea296ef6549b3175791025d17acb44447b6a1d.js
+public/assets/sport_db_admin/application-2e85a5894c0bd0efc3e1facd88b3307717e30df259248398a1bc15da8f931be7.css
 public/favicon.ico
 public/images/placeholder24x24.png
 public/images/placeholder32x32.png

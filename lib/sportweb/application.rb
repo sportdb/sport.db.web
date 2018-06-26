@@ -119,6 +119,9 @@ class SportWebHost < Rails::Application
   ## You can still access the environment
   ## by directly calling Rails.application.assets
   config.assets.compile = false
+
+
+  config.public_file_server.enabled = true
 end
 
 
