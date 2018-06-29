@@ -51,16 +51,6 @@ end # module SportDbAdmin
 #   and others
 
 
-def mkrootwindowsfix( root )
-  puts "root: #{root}"
-  if root.start_with?( "C:\\" )
-    puts "   use: #{root[2..-1]}"
-    root[2..-1]   ## cut-of "C:\\"
-  else
-    root
-  end
-end
-
 
 ### host app - no module - keep it simple
 class SportWebHost < Rails::Application
@@ -144,9 +134,9 @@ class SportWebHost < Rails::Application
     ## note: gets overwritten!? try again (later) after initialize - why? why not?
 
     ## test hello path
-    paths['hello'] = "#{SportWeb.root}/hello"
+    ## paths['hello'] = "#{SportWeb.root}/hello"
 
-    paths['log']    = File.expand_path( "./log/#{Rails.env}.log", mkrootwindowsfix(Dir.pwd) )  ## use working folder for logs
+    paths['log']    = File.expand_path( "./log/#{Rails.env}.log", Dir.pwd )  ## use working folder for logs
     ## log - check?  is folder/dir or log file itself?
     ##  >log<:
     ##    expanded: ["C:/Sites/sportdb/sport.db.web/log/production.log"]

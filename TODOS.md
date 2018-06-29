@@ -1,5 +1,7 @@
 # Todos
 
+- [ ] use puma start code directly (do NOT use rack handler for now)
+
 - [ ] check if we can move rails app root to sportweb/lib/sportweb ?
       is sportweb now and public is sportweb/public - do we care anyway?
 
