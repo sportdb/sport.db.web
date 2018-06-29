@@ -50,6 +50,18 @@ end # module SportDbAdmin
 #   see https://gist.github.com/josevalim/1942658
 #   and others
 
+
+def mkrootwindowsfix( root )
+  puts "root: #{root}"
+  if root.start_with?( "C:\\" )
+    puts "   use: #{root[2..-1]}"
+    root[2..-1]   ## cut-of "C:\\"
+  else
+    root
+  end
+end
+
+
 ### host app - no module - keep it simple
 class SportWebHost < Rails::Application
 
@@ -92,7 +104,6 @@ class SportWebHost < Rails::Application
   config.secret_key_base = "49837489qkuweoiuoqwehisuakshdjksadhaisdy78o34y138974xyqp9rmye8yrpiokeuioqwzyoiuxftoyqiuxrhm3iou1hrzmjk"
 
 
-
   #################################################
   # Enable the asset pipeline !!!!!!!!!!!!!!!!
   ## config.assets.enabled = true
@@ -124,17 +135,21 @@ class SportWebHost < Rails::Application
   config.public_file_server.enabled = true
 
 
-  ## set public path to built-in public
-  paths['public'] = "#{SportWebHost.root}/public"
-  ## note: gets overwritten!? try again (later) after initialize - why? why not?
+    ## set public path to built-in public
+    puts "root (app): #{SportWebHost.root}"
+    puts "root (gem): #{SportWeb.root}"
+    puts "current:    #{Dir.pwd}"
 
-  ## test hello path
-  paths['hello'] = "#{SportWebHost.root}/hello"
+    paths['public'] = "#{SportWeb.root}/public"
+    ## note: gets overwritten!? try again (later) after initialize - why? why not?
 
-  paths['log']    = File.expand_path( "./log/#{Rails.env}.log", Dir.pwd )  ## use working folder for logs
-  ## log - check?  is folder/dir or log file itself?
-  ##  >log<:
-  ##    expanded: ["C:/Sites/sportdb/sport.db.web/log/production.log"]
+    ## test hello path
+    paths['hello'] = "#{SportWeb.root}/hello"
+
+    paths['log']    = File.expand_path( "./log/#{Rails.env}.log", mkrootwindowsfix(Dir.pwd) )  ## use working folder for logs
+    ## log - check?  is folder/dir or log file itself?
+    ##  >log<:
+    ##    expanded: ["C:/Sites/sportdb/sport.db.web/log/production.log"]
 end
 
 

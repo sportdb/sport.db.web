@@ -100,5 +100,7 @@ Rails.application.paths.keys.each do |k|
    puts "---"
 end
 
-Rails.application.paths['public'] = "#{SportWebHost.root}/public"
-puts "public: #{Rails.application.paths['public'].expanded}"
+
+##
+## Rails.application.paths['public'] = "#{mkrootwindowsfix(SportWeb.root)}/public"
+## puts "public: #{Rails.application.paths['public'].expanded}"
