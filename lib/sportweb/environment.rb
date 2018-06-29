@@ -91,3 +91,11 @@ puts ">> Starting Rails stack:"
 Rails.configuration.middleware.each do |middleware|
   puts "use #{middleware.inspect}"
 end
+
+
+Rails.application.paths.keys.each do |k|
+   v = Rails.application.paths[ k ]
+   puts ">#{k}<:"
+   puts "  expanded: #{v.expanded}"
+   puts "---"
+end

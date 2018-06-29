@@ -1,6 +1,6 @@
 
 module SportWeb
-  VERSION = '0.3.0'
+  VERSION = '0.3.1'
 
   def self.banner
     "sportweb/#{VERSION} on Ruby #{RUBY_VERSION} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"

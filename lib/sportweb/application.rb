@@ -122,6 +122,14 @@ class SportWebHost < Rails::Application
 
 
   config.public_file_server.enabled = true
+
+
+  ## set public path to built-in public
+  paths['public'] = "#{SportWebHost.root}/public"
+  ## paths['log']    = File.expand_path( './log', Dir.pwd )  ## use working folder for logs
+  ## log - check?  is folder/dir or log file itself?
+  ##  >log<:
+  ##    expanded: ["C:/Sites/sportdb/sport.db.web/log/production.log"]
 end
 
 
