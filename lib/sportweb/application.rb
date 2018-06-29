@@ -126,7 +126,12 @@ class SportWebHost < Rails::Application
 
   ## set public path to built-in public
   paths['public'] = "#{SportWebHost.root}/public"
-  ## paths['log']    = File.expand_path( './log', Dir.pwd )  ## use working folder for logs
+  ## note: gets overwritten!? try again (later) after initialize - why? why not?
+
+  ## test hello path
+  paths['hello'] = "#{SportWebHost.root}/hello"
+
+  paths['log']    = File.expand_path( "./log/#{Rails.env}.log", Dir.pwd )  ## use working folder for logs
   ## log - check?  is folder/dir or log file itself?
   ##  >log<:
   ##    expanded: ["C:/Sites/sportdb/sport.db.web/log/production.log"]

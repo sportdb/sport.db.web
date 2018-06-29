@@ -99,3 +99,6 @@ Rails.application.paths.keys.each do |k|
    puts "  expanded: #{v.expanded}"
    puts "---"
 end
+
+Rails.application.paths['public'] = "#{SportWebHost.root}/public"
+puts "public: #{Rails.application.paths['public'].expanded}"
